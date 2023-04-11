@@ -1,31 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
-</head>
-<body>
+    <link rel="icon" type="image/x-icon" href="./assets/pngwing.com.png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+    <link rel="stylesheet" href="./Style/style.css" />
+  </head>
+  <body>
     <header>
-<h1>HR-Management System</h1>
-<nav>
-    <ul>
-        <li>Home</li>
-        <li>Accounting</li>
-        <li>consultation</li>
-    </ul>
-</nav>
+      <ul class="navBar">
+        <li>
+          <a href="./index.html">
+            <img src="./assets/pngwing.com (1).png" alt="logo" id="logo"
+          /></a>
+        </li>
+        <li><a href="./index.html">Home</a></li>
+        <li>
+          <a href="./accounting.html" target="_blank">Accounting</a>
+        </li>
+        <li><a href="">consultation</a></li>
+      </ul>
+      <div class="header">
+        <h1>HR-Management System</h1>
+      </div>
     </header>
     <main>
-<script src="./app.js"></script>
+      <section>
+        <form action="" id="myForm">
+          <label for="">Full name</label>
+          <input
+            type="text"
+            id="empName"
+            name="empName"
+            placeholder="Enter your full name"
+          /><br />
+          <label for="">Department </label>
+          <select name="Department" id="Department">
+            <option value="Administration">Administration</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Development">Development</option>
+            <option value="Finance">Finance</option></select
+          ><br />
+          <label for="">Level</label>
+          <select name="Level" id="Level">
+            <option value="Junior">Junior</option>
+            <option value="Mid-Senior">Mid-Senior</option>
+            <option value="Senior">Senior</option></select
+          ><br />
+          <label for="">Image url</label>
+          <input
+            type="text"
+            id="image"
+            name="image"
+            placeholder="Enter your profile picture link"
+          /><br />
+          <input type="submit" value="Submit" id="submit" />
+        </form>
+      </section>
+      <section id="mySection">
+        <div class="admin-section"><h2 id="admin" class="depTitle">Administration</h2></div>
+        <div class="market-section"><h2 id="market" class="depTitle">Marketing</h2></div>
+        <div class="dev-section"><h2 id="dev" class="depTitle">Development</h2></div>
+        <div class="finance-section"><h2 id="finance" class="depTitle">Finance</h2></div>
+      </section>
+      <script src="./app.js"></script>
     </main>
     <footer>
-<ul>
-    <li>About us</li>
-    <li>© 1996-2023, ASACLtuc.com</li>
-    <li>Contact Us</li>
-</ul>
+      <ul class="footer">
+        <li>About us</li>
+        <li>© 1996-2023, ASACLtuc.com</li>
+        <li>Contact Us</li>
+      </ul>
     </footer>
-</body>
+  </body>
 </html>
