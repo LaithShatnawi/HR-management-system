@@ -11,7 +11,6 @@ const marketSection = document.querySelector('.market-section');
 const devSection = document.querySelector('.dev-section');
 const financetSection = document.querySelector('.finance-section');
 let employees = [];
-let netSalary = [];
 
 function Employee(employeeId, fullName, department, level, image) {
     this.employeeId = employeeId;
@@ -20,7 +19,6 @@ function Employee(employeeId, fullName, department, level, image) {
     this.level = level;
     this.image = image;
     employees.push(this);
-    netSalary.push(this);
 };
 
 function employeesId() {
@@ -39,6 +37,29 @@ function addEmployee(event) {
     let empImg = event.target.image.value;
     let newEmp = new Employee(employeesId(), empName, empDepartment, empLvl, empImg);
     newEmp.render();
+    newEmp.calcSalary()
+}
+
+Employee.prototype.calcSalary = function () {
+    let min;
+    let max;
+    if (this.level === 'Senior') {
+        min = 1500;
+        max = 2000;
+    }
+    else if (this.level === 'Mid-Senior') {
+        min = 1000;
+        max = 1500;
+        console.log('test mid')
+    }
+    else {
+        min = 500;
+        max = 1000;
+    }
+    let salary = Math.floor(Math.random() * (max - min + 1)) + min;
+    let salaryTax = salary - salary * 0.075;
+
+    return salaryTax;
 }
 
 Employee.prototype.render = function () {
@@ -58,7 +79,7 @@ Employee.prototype.render = function () {
 
     let empId = document.createElement('h3');
     empId.classList.add('info');
-    empId.textContent = `Employee Id: ${employeesId()}`;
+    empId.textContent = `Employee Id: ${this.employeeId}`;
     card.appendChild(empId);
 
     let empDepartment1 = document.createElement('h3');
@@ -71,6 +92,11 @@ Employee.prototype.render = function () {
     empLvl1.classList.add('info');
     empLvl1.textContent = `Level: ${this.level}`;
     card.appendChild(empLvl1);
+
+    let empSalary1 = document.createElement('h3');
+    empSalary1.classList.add('info');
+    empSalary1.textContent = `Salary: ${this.calcSalary()}`;
+    card.appendChild(empSalary1);
 
     if (this.department === 'Administration') {
         adminSection.appendChild(card)
@@ -90,28 +116,17 @@ Employee.prototype.render = function () {
         mySection.appendChild(financetSection)
         FinanceTitle.style.display = 'block'
     }
-
-
-
-
-
-    // document.write(`<h2>Employee ID :</h2> ${this.employeeId} `);
-    // document.write(`<h2>Employee Name :</h2> ${this.fullName} `);
-    // document.write(`<h2>Department :</h2> ${this.department} `);
-    // document.write(`<h2>Level :</h2> ${this.level} `);
-    // document.write(`<h2>Image :</h2> <img src = "${this.image}" alt="">`);
 };
-// let employee1 = new Employee(1000, 'Ghazi Samer', 'Administration', 'Senior', './assets./employee1.jpg');
-// let employee2 = new Employee(1001, 'Lana Ali', 'Finance', 'Senior', './assets./employee2.jpg');
-// let employee3 = new Employee(1002, 'Tamara Ayoub', 'Marketing', 'Senior', './assets./employee3.jpeg');
-// let employee4 = new Employee(1003, 'Safi Walid', 'Administration', 'Mid-Senior', './assets./employee4.jpg');
-// let employee5 = new Employee(1004, 'Omar Zaid', 'Development', 'Senior', './assets./employee5.jpg');
-// let employee6 = new Employee(1005, 'Rana Saleh', 'Development	', 'Junior', './assets./employee6.jpg');
-// let employee7 = new Employee(1006, 'Hadi Ahmad', 'Finance	', 'Mid-Senior', './assets./employee7.jpg');
 
-// for (let i = 0; i < employees.length; i++) {
-//     employees[i].render();
-// }
-// for (let i = 0; i < employees.length; i++) {
-//     netSalary[i].calcSalary();
-// }
+let employee1 = new Employee(1000, 'Ghazi Samer', 'Administration', 'Senior', './assets/Ghazi.jpg');
+let employee2 = new Employee(1001, 'Lana Ali', 'Finance', 'Senior', './assets/Lana.jpg');
+let employee3 = new Employee(1002, 'Tamara Ayoub', 'Marketing', 'Senior', './assets/Tamara.jpg');
+let employee4 = new Employee(1003, 'Safi Walid', 'Administration', 'Mid-Senior', './assets/Safi.jpg');
+let employee5 = new Employee(1004, 'Omar Zaid', 'Development', 'Senior', './assets/Omar.jpg');
+let employee6 = new Employee(1005, 'Rana Saleh', 'Development	', 'Junior', './assets/Rana.jpg');
+let employee7 = new Employee(1006, 'Hadi Ahmad', 'Finance	', 'Mid-Senior', './assets/Hadi.jpg');
+
+for (let i = 0; i < employees.length; i++) {
+    employees[i].render();
+    employees[i].calcSalary();
+}
