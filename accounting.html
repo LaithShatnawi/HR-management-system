@@ -1,31 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Style/style.css" />
+    <title>Accounting</title>
+    <link rel="icon" type="image/x-icon" href="./assets/pngwing.com.png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+  </head>
+  <body>
     <header>
-<h1>HR-Management System</h1>
-<nav>
-    <ul>
-        <li>Home</li>
-        <li>Accounting</li>
-        <li>consultation</li>
-    </ul>
-</nav>
+      <ul class="navBar">
+        <li>
+          <a href="./index.html">
+            <img src="./assets/pngwing.com (1).png" alt="logo" id="logo"
+          /></a>
+        </li>
+        <li><a href="./index.html">Home</a></li>
+        <li>
+          <a href="./accounting.html">Accounting</a>
+        </li>
+        <li><a href="">consultation</a></li>
+      </ul>
+      <div class="header">
+        <h1>HR-Management System</h1>
+      </div>
+      <div id="secondHeader">
+        <h2>Departments Information</h2>
+      </div>
     </header>
     <main>
-
+      <section id="tableSection">
+        <table>
+          <thead>
+            <tr>
+              <th>Department Name :</th>
+              <th>Administration</th>
+              <th>Marketing</th>
+              <th>Development</th>
+              <th>Finance</th>
+            </tr>
+          </thead>
+          <tbody id="body">
+          </tbody>
+        </table>
+      </section>
     </main>
     <footer>
-<ul>
-    <li>About us</li>
-    <li>© 1996-2023, ASACLtuc.com</li>
-    <li>Contact Us</li>
-</ul>
+      <ul class="footer">
+        <li>About us</li>
+        <li>© 1996-2023, ASACLtuc.com</li>
+        <li>Contact Us</li>
+      </ul>
     </footer>
-</body>
+    <script src="./accounting.js"></script>
+  </body>
 </html>

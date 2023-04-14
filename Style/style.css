@@ -143,3 +143,30 @@ label {
   color: white;
   font-size: 50px;
 }
+#secondHeader {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 40px;
+}
+table,
+thead,
+tr,
+th,
+td {
+  font-size: 30px;
+  height: 70px;
+  color: white;
+  background-color: #1a5f7a;
+  border: 3px solid #159895;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+td{
+  text-align: center;
+}
+#tableSection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
