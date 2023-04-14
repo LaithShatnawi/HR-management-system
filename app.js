@@ -18,6 +18,7 @@ function Employee(employeeId, fullName, department, level, image) {
     this.department = department;
     this.level = level;
     this.image = image;
+    this.salary = this.calcSalary()
     employees.push(this);
 };
 
@@ -37,7 +38,7 @@ function addEmployee(event) {
     let empImg = event.target.image.value;
     let newEmp = new Employee(employeesId(), empName, empDepartment, empLvl, empImg);
     newEmp.render();
-    newEmp.calcSalary()
+    saveData(employees);
 }
 
 Employee.prototype.calcSalary = function () {
@@ -50,14 +51,13 @@ Employee.prototype.calcSalary = function () {
     else if (this.level === 'Mid-Senior') {
         min = 1000;
         max = 1500;
-        console.log('test mid')
     }
     else {
         min = 500;
         max = 1000;
     }
     let salary = Math.floor(Math.random() * (max - min + 1)) + min;
-    let salaryTax = salary - salary * 0.075;
+    let salaryTax = Math.floor(salary - salary * 0.075);
 
     return salaryTax;
 }
@@ -95,7 +95,7 @@ Employee.prototype.render = function () {
 
     let empSalary1 = document.createElement('h3');
     empSalary1.classList.add('info');
-    empSalary1.textContent = `Salary: ${this.calcSalary()}`;
+    empSalary1.textContent = `Salary: ${this.salary}`;
     card.appendChild(empSalary1);
 
     if (this.department === 'Administration') {
@@ -110,7 +110,6 @@ Employee.prototype.render = function () {
         devSection.appendChild(card)
         mySection.appendChild(devSection)
         devTitle.style.display = 'block'
-
     } else {
         financetSection.appendChild(card)
         mySection.appendChild(financetSection)
@@ -118,15 +117,31 @@ Employee.prototype.render = function () {
     }
 };
 
+function saveData(data) {
+    let stringData = JSON.stringify(data);
+    localStorage.setItem('Employees', stringData);
+}
+function getData() {
+    let receivedData = localStorage.getItem('Employees');
+    let objectData = JSON.parse(receivedData);
+    if (objectData != null) {
+        employees = [];
+        for (let i = 0; i < objectData.length; i++) {
+            new Employee(employeesId(), objectData[i].fullName, objectData[i].department, objectData[i].level, objectData[i].image,);
+        }
+    }
+}
+
 let employee1 = new Employee(1000, 'Ghazi Samer', 'Administration', 'Senior', './assets/Ghazi.jpg');
 let employee2 = new Employee(1001, 'Lana Ali', 'Finance', 'Senior', './assets/Lana.jpg');
 let employee3 = new Employee(1002, 'Tamara Ayoub', 'Marketing', 'Senior', './assets/Tamara.jpg');
 let employee4 = new Employee(1003, 'Safi Walid', 'Administration', 'Mid-Senior', './assets/Safi.jpg');
 let employee5 = new Employee(1004, 'Omar Zaid', 'Development', 'Senior', './assets/Omar.jpg');
-let employee6 = new Employee(1005, 'Rana Saleh', 'Development	', 'Junior', './assets/Rana.jpg');
-let employee7 = new Employee(1006, 'Hadi Ahmad', 'Finance	', 'Mid-Senior', './assets/Hadi.jpg');
+let employee6 = new Employee(1005, 'Rana Saleh', 'Development', 'Junior', './assets/Rana.jpg');
+let employee7 = new Employee(1006, 'Hadi Ahmad', 'Finance', 'Mid-Senior', './assets/Hadi.jpg');
+
+getData();
 
 for (let i = 0; i < employees.length; i++) {
     employees[i].render();
-    employees[i].calcSalary();
 }
